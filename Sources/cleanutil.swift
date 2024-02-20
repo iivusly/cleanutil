@@ -5,10 +5,18 @@
 // https://swiftpackageindex.com/apple/swift-argument-parser/documentation
 
 import ArgumentParser
+import Rainbow
 
 @main
 struct cleanutil: ParsableCommand {
-    mutating func run() throws {
-        print("Hello, world!")
+    static let configuration = CommandConfiguration(
+        abstract: "Utility for cleaning unwanted files",
+        subcommands: [Bundles.self]
+    )
+    
+    struct Bundles: ParsableCommand {
+        mutating func run() {
+            print("Test".red)
+        }
     }
 }
