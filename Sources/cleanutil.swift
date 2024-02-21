@@ -6,17 +6,19 @@
 
 import ArgumentParser
 import Rainbow
+import Foundation
 
 @main
 struct cleanutil: ParsableCommand {
     static let configuration = CommandConfiguration(
         abstract: "Utility for cleaning unwanted files",
-        subcommands: [Bundles.self]
+        subcommands: [Bundles.self],
+        defaultSubcommand: Bundles.self
     )
     
     struct Bundles: ParsableCommand {
-        mutating func run() {
-            print("Test".red)
+        mutating func run() throws {
+            print(try ApplicationManager().getApplications())
         }
     }
 }
